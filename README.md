@@ -1,8 +1,8 @@
 # Pro  Air monitor Lite AQM [CGDN1] integration for Home Assistant
 
-<img src="https://brands.home-assistant.io/qingping_CGDN1/dark_icon.png" alt="Qingping CGDN1 Icon" width="150" align="left" style="margin-right: 20px;">
+<img src="https://brands.home-assistant.io/qingping_air_monitor_lite_CGDN1/dark_icon.png" alt="Qingping CGDN1 Icon" width="150" align="left" style="margin-right: 20px;">
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs) ![Download](https://img.shields.io/github/downloads/mash2k3/qingping_CGDN1/total.svg?label=Downloads) ![Analytics](https://img.shields.io/badge/dynamic/json?label=Installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.qingping_CGDN1.total)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs) ![Download](https://img.shields.io/github/downloads/titovskiy/qingping_air_monitor_lite_CGDN1/total.svg?label=Downloads) ![Analytics](https://img.shields.io/badge/dynamic/json?label=Installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.qingping_air_monitor_lite_CGDN1.total)
 
 This custom component integrates the Pro  Air monitor Lite Air Quality Monitor [CGDN1] with Home Assistant, allowing you to monitor various environmental parameters in realtime.
 <br /><br /><br />
@@ -27,12 +27,12 @@ This custom component integrates the Pro  Air monitor Lite Air Quality Monitor [
 ## Installation
 
 > [!NOTE]
-> Before you begin you must enable mqtt on the device. Follow the instructions provided by GreyEarl [here](https://github.com/mash2k3/qingping_CGDN1/blob/main/enableMQTT.md).
+> Before you begin you must enable mqtt on the device. Follow the instructions provided by GreyEarl [here](https://github.com/titovskiy/qingping_air_monitor_lite_CGDN1/blob/main/enableMQTT.md).
 > </br> Client ID, Up Topic and Down Topic must be filled out extacly as shown in [example](https://private-user-images.githubusercontent.com/33351068/273692035-ee11872a-9cc5-4d79-9951-9948facb8a59.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjUxNTY2MDcsIm5iZiI6MTcyNTE1NjMwNywicGF0aCI6Ii8zMzM1MTA2OC8yNzM2OTIwMzUtZWUxMTg3MmEtOWNjNS00ZDc5LTk5NTEtOTk0OGZhY2I4YTU5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTAxVDAyMDUwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlmZDdkMDNiMDdjOGI3ODhmODM2Zjk0OTI0ODBlYzkxM2RhODc2ZDE0OTY5MTYxMzFlMDA0YTMyODVmMGRhNzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.N_q8hPLFs8DHPib0zDzEfid5q8_4plWgoUwsAd98D38).
 </br>After that is complete continue with HACS installation.
 
 1. Use HACS to install this integration:
-   <br /><br /><a href="https://my.home-assistant.io/redirect/hacs_repository/?repository=qingping_CGDN1&category=integration&owner=mash2k3" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open a repository inside the Home Assistant Community Store." /></a>
+   <br /><br /><a href="https://my.home-assistant.io/redirect/hacs_repository/?repository=qingping_air_monitor_lite_CGDN1&category=integration&owner=titovskiy" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open a repository inside the Home Assistant Community Store." /></a>
 2. Download the Pro  Air monitor Lite AQM repository
 3. Restart Home Assistant
 4. Go to "Configuration" -> "Integrations" and click "+" to add a new integration
