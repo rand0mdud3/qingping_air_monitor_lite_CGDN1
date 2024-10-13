@@ -12,14 +12,14 @@ jobs:
 
       - name: ZIP Component Dir
         run: |
-          cd ${{ github.workspace }}/custom_components/qingping_cgdn1
-          zip -r qingping_cgdn1.zip ./
+          cd ${{ github.workspace }}/custom_components/qingping_air_monitor_lite_CGDN1
+          zip -r qingping_air_monitor_lite_CGDN1.zip ./
 
       - name: Upload zip to release
         uses: svenstaro/upload-release-action@v2
         with:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
-          file: ${{ github.workspace }}/custom_components/qingping_cgdn1/qingping_cgdn1.zip
-          asset_name: qingping_cgdn1.zip
+          file: ${{ github.workspace }}/custom_components/qingping_air_monitor_lite_CGDN1/qingping_air_monitor_lite_CGDN1.zip
+          asset_name: qingping_air_monitor_lite_CGDN1.zip
           tag: ${{ github.ref }}
           overwrite: true

@@ -1,12 +1,12 @@
 {
-  "domain": "qingping_cgdn1",
+  "domain": "qingping_air_monitor_lite_CGDN1",
   "name": "Qingping Pro AQM",
-  "codeowners": ["@mash2k3"],
+  "codeowners": ["@titovskiy"],
   "config_flow": true,
   "dependencies": ["mqtt"],
-  "documentation": "https://github.com/mash2k3/qingping_cgdn1",
+  "documentation": "https://github.com/titovskiy/qingping_air_monitor_lite_CGDN1",
   "iot_class": "local_push",
-  "issue_tracker": "https://github.com/mash2k3/qingping_cgdn1/issues",
+  "issue_tracker": "https://github.com/titovskiy/qingping_air_monitor_lite_CGDN1/issues",
   "requirements": [],
   "version": "1.2.0"
 }
