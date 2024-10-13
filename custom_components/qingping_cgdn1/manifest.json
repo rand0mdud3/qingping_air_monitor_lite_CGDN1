@@ -1,7 +1,7 @@
 {
   "domain": "qingping_air_monitor_lite_CGDN1",
   "name": "Qingping Air monitor Lite",
-  "codeowners": ["@titovskiy"],
+  "codeowners": ["@mash2k3", "@titovskiy"],
   "config_flow": true,
   "dependencies": ["mqtt"],
   "documentation": "https://github.com/titovskiy/qingping_air_monitor_lite_CGDN1",
