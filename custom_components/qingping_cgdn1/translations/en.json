@@ -3,7 +3,7 @@
         "step": {
             "user": {
                 "description": "Set up your Qingping CGDN1 device",
-                "title": "Qingping Pro AQM",
+                "title": "Qingping Air monitor Lite",
                 "data": {
                     "name": "Device Name",
                     "mac": "MAC Address"
@@ -15,7 +15,7 @@
             },
             "manual": {
                 "description": "Set up your Qingping CGDN1 device",
-                "title": "Qingping Pro AQM",
+                "title": "Qingping Air monitor Lite",
                 "data": {
                     "name": "Device Name",
                     "mac": "MAC Address"

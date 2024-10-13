@@ -1,4 +1,4 @@
-# Qingping Air monitor Lite AQM [CGDN1] integration for Home Assistant
+# Qingping Air monitor Lite [CGDN1] integration for Home Assistant
 
 <img src="https://brands.home-assistant.io/qingping_air_monitor_lite_CGDN1/dark_icon.png" alt="Qingping CGDN1 Icon" width="150" align="left" style="margin-right: 20px;">
 
@@ -9,7 +9,7 @@ This custom component integrates the Qingping Air monitor Lite Air Quality Monit
 ## Requirements
 
 - MQTT integration installed and configured.
-- Enable MQTT on Qingping AQM devices using instructions below.
+- Enable MQTT on Qingping devices using instructions below.
 - HACS installed.
  
 ## Features
@@ -33,10 +33,10 @@ This custom component integrates the Qingping Air monitor Lite Air Quality Monit
 
 1. Use HACS to install this integration:
   <br /><br /><a href="https://my.home-assistant.io/redirect/hacs_repository/?repository=qingping_air_monitor_lite_CGDN1&category=integration&owner=titovskiy" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open a repository inside the Home Assistant Community Store." /></a>
-2. Download the Qingping Air monitor Lite AQM repository
+2. Download the Qingping Air monitor Lite repository
 3. Restart Home Assistant
 4. Go to "Configuration" -> "Integrations" and click "+" to add a new integration
-5. Search for "Qingping Air monitor Lite AQM" and follow the configuration steps
+5. Search for "Qingping Air monitor Lite" and follow the configuration steps
 
 ## Configuration
 <img src="https://github.com/user-attachments/assets/b27d218e-e815-4e64-b342-a44b1287d9a1" alt="Device Discovery" width="250" align="left">

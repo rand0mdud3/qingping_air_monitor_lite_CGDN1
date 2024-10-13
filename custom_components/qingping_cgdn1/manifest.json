@@ -1,6 +1,6 @@
 {
   "domain": "qingping_air_monitor_lite_CGDN1",
-  "name": "Qingping Pro AQM",
+  "name": "Qingping Air monitor Lite",
   "codeowners": ["@titovskiy"],
   "config_flow": true,
   "dependencies": ["mqtt"],
