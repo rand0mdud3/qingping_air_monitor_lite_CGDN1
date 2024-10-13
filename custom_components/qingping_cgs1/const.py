@@ -1,6 +1,6 @@
-"""Constants for the Qingping CGS1 integration."""
+"""Constants for the Qingping CGDN1 integration."""
 
-DOMAIN = "qingping_cgs1"
+DOMAIN = "qingping_cgdn1"
 CONF_MAC = "mac"
 CONF_NAME = "name"
 

@@ -1,4 +1,4 @@
-"""Support for Qingping CGS1 sensors."""
+"""Support for Qingping CGDN1 sensors."""
 from __future__ import annotations
 
 import json
@@ -46,7 +46,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Qingping CGS1 sensor based on a config entry."""
+    """Set up Qingping CGDN1 sensor based on a config entry."""
     mac = config_entry.data[CONF_MAC]
     name = config_entry.data[CONF_NAME]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
@@ -62,14 +62,14 @@ async def async_setup_entry(
         "identifiers": {(DOMAIN, mac)},
         "name": name,
         "manufacturer": "Qingping",
-        "model": "CGS1",
+        "model": "CGDN1",
     }
 
-    status_sensor = QingpingCGS1StatusSensor(coordinator, config_entry, mac, name, device_info)
-    firmware_sensor = QingpingCGS1FirmwareSensor(coordinator, config_entry, mac, name, device_info)
-    type_sensor = QingpingCGS1TypeSensor(coordinator, config_entry, mac, name, device_info)
-    mac_sensor = QingpingCGS1MACSensor(coordinator, config_entry, mac, name, device_info)
-    battery_state = QingpingCGS1BatteryStateSensor(coordinator, config_entry, mac, name, device_info)
+    status_sensor = QingpingCGDN1StatusSensor(coordinator, config_entry, mac, name, device_info)
+    firmware_sensor = QingpingCGDN1FirmwareSensor(coordinator, config_entry, mac, name, device_info)
+    type_sensor = QingpingCGDN1TypeSensor(coordinator, config_entry, mac, name, device_info)
+    mac_sensor = QingpingCGDN1MACSensor(coordinator, config_entry, mac, name, device_info)
+    battery_state = QingpingCGDN1BatteryStateSensor(coordinator, config_entry, mac, name, device_info)
 
     sensors = [
         status_sensor,
@@ -77,13 +77,13 @@ async def async_setup_entry(
         type_sensor,
         mac_sensor,
         battery_state,
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_BATTERY, PERCENTAGE, SensorDeviceClass.BATTERY, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_CO2, PPM, SensorDeviceClass.CO2, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_HUMIDITY, PERCENTAGE, SensorDeviceClass.HUMIDITY, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_PM10, CONCENTRATION, SensorDeviceClass.PM10, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_PM25, CONCENTRATION, SensorDeviceClass.PM25, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_TEMPERATURE, native_temp_unit, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT, device_info),
-        QingpingCGS1Sensor(coordinator, config_entry, mac, name, SENSOR_TVOC, PPB, SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS_PARTS, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_BATTERY, PERCENTAGE, SensorDeviceClass.BATTERY, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_CO2, PPM, SensorDeviceClass.CO2, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_HUMIDITY, PERCENTAGE, SensorDeviceClass.HUMIDITY, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_PM10, CONCENTRATION, SensorDeviceClass.PM10, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_PM25, CONCENTRATION, SensorDeviceClass.PM25, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_TEMPERATURE, native_temp_unit, SensorDeviceClass.TEMPERATURE, SensorStateClass.MEASUREMENT, device_info),
+        QingpingCGDN1Sensor(coordinator, config_entry, mac, name, SENSOR_TVOC, PPB, SensorDeviceClass.VOLATILE_ORGANIC_COMPOUNDS_PARTS, SensorStateClass.MEASUREMENT, device_info),
     ]
 
     async_add_entities(sensors)
@@ -135,7 +135,7 @@ async def async_setup_entry(
                         if isinstance(battery_data, dict):
                             battery_charging = battery_data.get("status") == 1
                     for sensor in sensors[4:]:  # Skip status, firmware, mac and type sensors
-                        if isinstance(sensor, QingpingCGS1BatteryStateSensor):
+                        if isinstance(sensor, QingpingCGDN1BatteryStateSensor):
                             if battery_charging is not None:
                                 sensor.update_battery_state(battery_charging)
                         elif sensor._sensor_type in data:
@@ -176,8 +176,8 @@ async def async_setup_entry(
     else:
         _LOGGER.error("Failed to connect to MQTT for initial config publish")
 
-class QingpingCGS1StatusSensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 status sensor."""
+class QingpingCGDN1StatusSensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 status sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the sensor."""
@@ -209,7 +209,7 @@ class QingpingCGS1StatusSensor(CoordinatorEntity, SensorEntity):
             # Update other sensors' availability
             sensors = self.hass.data[DOMAIN][self._config_entry.entry_id].get("sensors", [])
             for sensor in sensors:
-                if isinstance(sensor, QingpingCGS1Sensor):
+                if isinstance(sensor, QingpingCGDN1Sensor):
                     sensor.async_write_ha_state()
             # Call publish_config when status changes from offline to online
             if self._last_status == "offline" and new_status == "online":
@@ -221,7 +221,7 @@ class QingpingCGS1StatusSensor(CoordinatorEntity, SensorEntity):
         """Publish config when status changes from offline to online."""
         sensors = self.hass.data[DOMAIN][self._config_entry.entry_id].get("sensors", [])
         for sensor in sensors:
-            if isinstance(sensor, QingpingCGS1Sensor):
+            if isinstance(sensor, QingpingCGDN1Sensor):
                 await sensor.publish_config()
                 break  # We only need to call it once                
 
@@ -236,8 +236,8 @@ class QingpingCGS1StatusSensor(CoordinatorEntity, SensorEntity):
             self.hass, update_status, timedelta(seconds=60)
         ))
 
-class QingpingCGS1FirmwareSensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 firmware sensor."""
+class QingpingCGDN1FirmwareSensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 firmware sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the sensor."""
@@ -256,8 +256,8 @@ class QingpingCGS1FirmwareSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = version
         self.async_write_ha_state()
 
-class QingpingCGS1MACSensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 mac sensor."""
+class QingpingCGDN1MACSensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 mac sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the sensor."""
@@ -276,8 +276,8 @@ class QingpingCGS1MACSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = mac
         self.async_write_ha_state()
 
-class QingpingCGS1BatteryStateSensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 battery state sensor."""
+class QingpingCGDN1BatteryStateSensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 battery state sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the sensor."""
@@ -296,8 +296,8 @@ class QingpingCGS1BatteryStateSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = "Charging" if status == 1 else "Discharging"
         self.async_write_ha_state()
 
-class QingpingCGS1TypeSensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 type sensor."""
+class QingpingCGDN1TypeSensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 type sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the sensor."""
@@ -316,8 +316,8 @@ class QingpingCGS1TypeSensor(CoordinatorEntity, SensorEntity):
         self._attr_native_value = device_type
         self.async_write_ha_state()
 
-class QingpingCGS1Sensor(CoordinatorEntity, SensorEntity):
-    """Representation of a Qingping CGS1 sensor."""
+class QingpingCGDN1Sensor(CoordinatorEntity, SensorEntity):
+    """Representation of a Qingping CGDN1 sensor."""
 
     def __init__(self, coordinator, config_entry, mac, name, sensor_type, unit, device_class, state_class, device_info):
         """Initialize the sensor."""
@@ -433,7 +433,7 @@ class QingpingCGS1Sensor(CoordinatorEntity, SensorEntity):
     def available(self) -> bool:
         """Return True if entity is available."""
         sensors = self.hass.data.get(DOMAIN, {}).get(self._config_entry.entry_id, {}).get("sensors", [])
-        status_sensor = next((sensor for sensor in sensors if isinstance(sensor, QingpingCGS1StatusSensor)), None)
+        status_sensor = next((sensor for sensor in sensors if isinstance(sensor, QingpingCGDN1StatusSensor)), None)
         return status_sensor.native_value == "online" if status_sensor else False
 
     async def async_added_to_hass(self) -> None:

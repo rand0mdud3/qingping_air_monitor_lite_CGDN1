@@ -1,4 +1,4 @@
-"""Config flow for Qingping CGS1 integration."""
+"""Config flow for Qingping CGDN1 integration."""
 from __future__ import annotations
 
 import voluptuous as vol
@@ -18,7 +18,7 @@ from .const import DOMAIN, MQTT_TOPIC_PREFIX
 _LOGGER = logging.getLogger(__name__)
 
 class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
-    """Handle a config flow for Qingping CGS1."""
+    """Handle a config flow for Qingping CGDN1."""
 
     VERSION = 1
 
@@ -65,7 +65,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             return self.async_create_entry(title=user_input[CONF_NAME], data=user_input)
 
         except Exception as ex:
-            _LOGGER.error("Unexpected exception in Qingping CGS1 config flow: %s", ex)
+            _LOGGER.error("Unexpected exception in Qingping CGDN1 config flow: %s", ex)
             errors["base"] = "unknown"
             return self.async_show_form(
                 step_id="user",
@@ -119,7 +119,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             )
 
     async def _async_discover_devices(self):
-        """Discover available Qingping CGS1 devices via MQTT."""
+        """Discover available Qingping CGDN1 devices via MQTT."""
         try:
             # Get list of already configured devices
             configured_devices = {
@@ -132,7 +132,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
                     # Extract MAC address from the topic
                     mac = msg.topic.split('/')[-2]
                     if mac and mac not in configured_devices and mac not in self._discovered_devices:
-                        self._discovered_devices[mac] = f"Qingping CGS1 ({mac})"
+                        self._discovered_devices[mac] = f"Qingping CGDN1 ({mac})"
                 except Exception as ex:
                     _LOGGER.error("Error handling MQTT message: %s", ex)
 
@@ -144,10 +144,10 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
             # Wait for a short time to collect messages
             await asyncio.sleep(10)  # Increased to 10 seconds for better discovery
 
-            _LOGGER.info(f"Discovered {len(self._discovered_devices)} new Qingping CGS1 devices")
+            _LOGGER.info(f"Discovered {len(self._discovered_devices)} new Qingping CGDN1 devices")
 
         except HomeAssistantError as ex:
-            _LOGGER.error("Error discovering Qingping CGS1 devices: %s", ex)
+            _LOGGER.error("Error discovering Qingping CGDN1 devices: %s", ex)
         except Exception as ex:
             _LOGGER.error("Unexpected error in device discovery: %s", ex)
 
@@ -158,7 +158,7 @@ class ConfigFlow(config_entries.ConfigFlow, domain=DOMAIN):
         return OptionsFlowHandler(config_entry)
 
 class OptionsFlowHandler(config_entries.OptionsFlow):
-    """Handle options flow for Qingping CGS1."""
+    """Handle options flow for Qingping CGDN1."""
 
     def __init__(self, config_entry):
         """Initialize options flow."""

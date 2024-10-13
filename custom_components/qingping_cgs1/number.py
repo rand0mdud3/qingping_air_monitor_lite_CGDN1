@@ -1,4 +1,4 @@
-"""Support for Qingping CGS1 offset number inputs."""
+"""Support for Qingping CGDN1 offset number inputs."""
 from __future__ import annotations
 
 from homeassistant.components.number import NumberEntity
@@ -16,7 +16,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Qingping CGS1 number inputs from a config entry."""
+    """Set up Qingping CGDN1 number inputs from a config entry."""
     mac = config_entry.data[CONF_MAC]
     name = config_entry.data[CONF_NAME]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
@@ -26,17 +26,17 @@ async def async_setup_entry(
         "identifiers": {(DOMAIN, mac)},
         "name": name,
         "manufacturer": "Qingping",
-        "model": "CGS1",
+        "model": "CGDN1",
     }
 
     async_add_entities([
-        QingpingCGS1OffsetNumber(coordinator, config_entry, mac, name, "Temp Offset", CONF_TEMPERATURE_OFFSET, device_info, native_temp_unit),
-        QingpingCGS1OffsetNumber(coordinator, config_entry, mac, name, "Humidity Offset", CONF_HUMIDITY_OFFSET, device_info, "%"),
-        QingpingCGS1UpdateIntervalNumber(coordinator, config_entry, mac, name, device_info),
+        QingpingCGDN1OffsetNumber(coordinator, config_entry, mac, name, "Temp Offset", CONF_TEMPERATURE_OFFSET, device_info, native_temp_unit),
+        QingpingCGDN1OffsetNumber(coordinator, config_entry, mac, name, "Humidity Offset", CONF_HUMIDITY_OFFSET, device_info, "%"),
+        QingpingCGDN1UpdateIntervalNumber(coordinator, config_entry, mac, name, device_info),
     ])
 
-class QingpingCGS1OffsetNumber(CoordinatorEntity, NumberEntity):
-    """Representation of a Qingping CGS1 offset number input."""
+class QingpingCGDN1OffsetNumber(CoordinatorEntity, NumberEntity):
+    """Representation of a Qingping CGDN1 offset number input."""
 
     def __init__(self, coordinator, config_entry, mac, name, offset_name, offset_key, device_info, unit_of_measurement):
         """Initialize the number entity."""
@@ -81,8 +81,8 @@ class QingpingCGS1OffsetNumber(CoordinatorEntity, NumberEntity):
             self.coordinator.data[self._offset_key] = self._config_entry.data.get(self._offset_key, DEFAULT_OFFSET)
         self.async_write_ha_state()
 
-class QingpingCGS1UpdateIntervalNumber(CoordinatorEntity, NumberEntity):
-    """Representation of a Qingping CGS1 update interval number input."""
+class QingpingCGDN1UpdateIntervalNumber(CoordinatorEntity, NumberEntity):
+    """Representation of a Qingping CGDN1 update interval number input."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the number entity."""

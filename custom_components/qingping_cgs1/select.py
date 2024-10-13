@@ -1,4 +1,4 @@
-"""Support for Qingping CGS1 select entities."""
+"""Support for Qingping CGDN1 select entities."""
 from __future__ import annotations
 
 from homeassistant.components.select import SelectEntity
@@ -18,7 +18,7 @@ async def async_setup_entry(
     config_entry: ConfigEntry,
     async_add_entities: AddEntitiesCallback,
 ) -> None:
-    """Set up Qingping CGS1 select entities from a config entry."""
+    """Set up Qingping CGDN1 select entities from a config entry."""
     mac = config_entry.data[CONF_MAC]
     name = config_entry.data[CONF_NAME]
     coordinator = hass.data[DOMAIN][config_entry.entry_id]["coordinator"]
@@ -27,15 +27,15 @@ async def async_setup_entry(
         "identifiers": {(DOMAIN, mac)},
         "name": name,
         "manufacturer": "Qingping",
-        "model": "CGS1",
+        "model": "CGDN1",
     }
 
     async_add_entities([
-        QingpingCGS1TVOCUnitSelect(coordinator, config_entry, mac, name, device_info),
+        QingpingCGDN1TVOCUnitSelect(coordinator, config_entry, mac, name, device_info),
     ])
 
-class QingpingCGS1TVOCUnitSelect(CoordinatorEntity, SelectEntity):
-    """Representation of a Qingping CGS1 TVOC unit select entity."""
+class QingpingCGDN1TVOCUnitSelect(CoordinatorEntity, SelectEntity):
+    """Representation of a Qingping CGDN1 TVOC unit select entity."""
 
     def __init__(self, coordinator, config_entry, mac, name, device_info):
         """Initialize the select entity."""
