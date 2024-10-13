@@ -1,10 +1,10 @@
-# Qingping Pro AQM [CGS1] integration for Home Assistant
+# Pro  Air monitor Lite AQM [CGDN1] integration for Home Assistant
 
-<img src="https://brands.home-assistant.io/qingping_cgs1/dark_icon.png" alt="Qingping CGS1 Icon" width="150" align="left" style="margin-right: 20px;">
+<img src="https://brands.home-assistant.io/qingping_CGDN1/dark_icon.png" alt="Qingping CGDN1 Icon" width="150" align="left" style="margin-right: 20px;">
 
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs) ![Download](https://img.shields.io/github/downloads/mash2k3/qingping_cgs1/total.svg?label=Downloads) ![Analytics](https://img.shields.io/badge/dynamic/json?label=Installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.qingping_cgs1.total)
+[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg)](https://github.com/custom-components/hacs) ![Download](https://img.shields.io/github/downloads/mash2k3/qingping_CGDN1/total.svg?label=Downloads) ![Analytics](https://img.shields.io/badge/dynamic/json?label=Installs&cacheSeconds=15600&url=https://analytics.home-assistant.io/custom_integrations.json&query=$.qingping_CGDN1.total)
 
-This custom component integrates the Qingping Pro Air Quality Monitor [CGS1] with Home Assistant, allowing you to monitor various environmental parameters in realtime.
+This custom component integrates the Pro  Air monitor Lite Air Quality Monitor [CGDN1] with Home Assistant, allowing you to monitor various environmental parameters in realtime.
 <br /><br /><br />
 ## Requirements
 
@@ -14,7 +14,7 @@ This custom component integrates the Qingping Pro Air Quality Monitor [CGS1] wit
   
 ## Features
 
-- Automatic discovery of Qingping CGS1 devices
+- Automatic discovery of Qingping CGDN1 devices
 - Real-time updates of air quality data
 - Configurable temperature and humidity offsets
 - Adjustable update interval
@@ -27,20 +27,20 @@ This custom component integrates the Qingping Pro Air Quality Monitor [CGS1] wit
 ## Installation
 
 > [!NOTE]
-> Before you begin you must enable mqtt on the device. Follow the instructions provided by GreyEarl [here](https://github.com/mash2k3/qingping_cgs1/blob/main/enableMQTT.md).
+> Before you begin you must enable mqtt on the device. Follow the instructions provided by GreyEarl [here](https://github.com/mash2k3/qingping_CGDN1/blob/main/enableMQTT.md).
 > </br> Client ID, Up Topic and Down Topic must be filled out extacly as shown in [example](https://private-user-images.githubusercontent.com/33351068/273692035-ee11872a-9cc5-4d79-9951-9948facb8a59.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MjUxNTY2MDcsIm5iZiI6MTcyNTE1NjMwNywicGF0aCI6Ii8zMzM1MTA2OC8yNzM2OTIwMzUtZWUxMTg3MmEtOWNjNS00ZDc5LTk5NTEtOTk0OGZhY2I4YTU5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDA5MDElMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwOTAxVDAyMDUwN1omWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTlmZDdkMDNiMDdjOGI3ODhmODM2Zjk0OTI0ODBlYzkxM2RhODc2ZDE0OTY5MTYxMzFlMDA0YTMyODVmMGRhNzQmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.N_q8hPLFs8DHPib0zDzEfid5q8_4plWgoUwsAd98D38).
 </br>After that is complete continue with HACS installation.
 
 1. Use HACS to install this integration:
-   <br /><br /><a href="https://my.home-assistant.io/redirect/hacs_repository/?repository=qingping_cgs1&category=integration&owner=mash2k3" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open a repository inside the Home Assistant Community Store." /></a>
-2. Download the Qingping Pro AQM repository
+   <br /><br /><a href="https://my.home-assistant.io/redirect/hacs_repository/?repository=qingping_CGDN1&category=integration&owner=mash2k3" target="_blank" rel="noreferrer noopener"><img src="https://my.home-assistant.io/badges/hacs_repository.svg" alt="Open your Home Assistant instance and open a repository inside the Home Assistant Community Store." /></a>
+2. Download the Pro  Air monitor Lite AQM repository
 3. Restart Home Assistant
 4. Go to "Configuration" -> "Integrations" and click "+" to add a new integration
-5. Search for "Qingping Pro AQM" and follow the configuration steps
+5. Search for "Pro  Air monitor Lite AQM" and follow the configuration steps
 
 ## Configuration
 <img src="https://github.com/user-attachments/assets/b27d218e-e815-4e64-b342-a44b1287d9a1" alt="Device Discovery" width="250" align="left">
-The integration supports automatic discovery of Qingping CGS1 devices.
+The integration supports automatic discovery of Qingping CGDN1 devices.
 <br />If your device is not discovered automatically, you can add it manually by providing the MAC address. 
 <br />⚠️ Do not include : in your MAC address. example: 532D38701E1F
 <br /><br /><br /><br /><br /><br /><br /><br />
@@ -49,11 +49,11 @@ The integration supports automatic discovery of Qingping CGS1 devices.
 ## How it Works
 <img src="https://github.com/user-attachments/assets/46567747-a8cb-443e-be23-78a87e741a42" alt="Device Discovery" width="275" align="right">
 
-1. **Device Discovery**: The integration uses MQTT to discover Qingping CGS1 devices on your network. It listens for messages on the MQTT topic `qingping/#` to identify available devices.
+1. **Device Discovery**: The integration uses MQTT to discover Qingping CGDN1 devices on your network. It listens for messages on the MQTT topic `qingping/#` to identify available devices.
 
 2. **Configuration**: Once a device is discovered, you can add it to your Home Assistant instance through the UI. The integration will prompt you to enter a name for the device and confirm its MAC address.
 
-3. **Sensors**: The integration creates several sensors for each Qingping CGS1 device:
+3. **Sensors**: The integration creates several sensors for each Qingping CGDN1 device:
    - Temperature
    - Humidity
    - CO2 level
@@ -85,7 +85,7 @@ The integration supports automatic discovery of Qingping CGS1 devices.
 ## Troubleshooting
 
 If you encounter any issues:
-1. Check that your Qingping CGS1 device can send data via MQTT
+1. Check that your Qingping CGDN1 device can send data via MQTT
 2. Ensure MQTT is set up on each device as instructed
 3. Ensure that MQTT is properly set up in your Home Assistant instance
 4. Check the Home Assistant logs for any error messages related to this integration
