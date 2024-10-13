@@ -1,4 +1,4 @@
-## Enable MQTT on CGS1 AQM Device
+## Enable MQTT on CGDN1 AQM Device
 There are two ways getting MQTT to work on your Qingping Air Monitor.
 
 1. Contact to support@qingping.co (easiest way)
