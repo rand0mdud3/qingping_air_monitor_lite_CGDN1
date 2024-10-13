@@ -1,7 +1,5 @@
 {
   "name": "Qingping Air monitor Lite",
   "homeassistant": "2024.8",
-  "render_readme": true,
-  "zip_release": true,
-  "filename": "qingping_air_monitor_lite_CGDN1.zip"
+  "render_readme": true
 }
