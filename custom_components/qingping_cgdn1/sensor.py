@@ -116,7 +116,8 @@ async def async_setup_entry(
 
             timestamp = payload.get("timestamp")
             if timestamp is not None:
-                status_sensor.update_timestamp(timestamp)
+                # Some devices have bad timestamps, so just use current time
+                status_sensor.update_timestamp(str(int(time.time())))
 
             mac_address = payload.get("mac")
             if mac_address is not None:
